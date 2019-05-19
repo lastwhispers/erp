@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.xlr.erp.entity.Orderdetail" table="orderdetail" >
+        <id name="uuid" >
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"> <param name="sequence_name">orderdetail_seq</param> </generator>
+        </id>
+
+        <property name="goodsuuid" /> 
+        <property name="goodsname" /> 
+        <property name="price" /> 
+        <property name="num" /> 
+        <property name="money" /> 
+        <property name="endtime" /> 
+        <property name="ender" /> 
+        <property name="storeuuid" /> 
+        <property name="state" /> 
+        
+        <many-to-one name="orders" column="ordersuuid" class="cn.xlr.erp.entity.Orders"></many-to-one>
+ 
+    </class>
+</hibernate-mapping>

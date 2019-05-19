@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>员工管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="ui/date.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript">
+	var name="emp";
+	var height = 300;
+	var width = 300;
+	var columns=[[
+	  		    {field:'uuid',title:'编号',width:100},
+	  		    {field:'username',title:'登陆名',width:100},
+	  		    {field:'name',title:'真实姓名',width:100},
+	  		    {field:'gender',title:'性别',width:100,formatter:function(value, row, index){
+	  		    	value = row.gender;
+	  		    	if(1 == value * 1){
+	  		    		return '男';
+	  		    	}
+	  		    	if(0 == value * 1){
+	  		    		return '女';
+	  		    	}
+	  		    }},
+	  		    {field:'email',title:'邮件地址',width:100},
+	  		    {field:'tele',title:'联系电话',width:100},
+	  		    {field:'address',title:'联系地址',width:100},
+	  		    {field:'birthday',title:'出生年月日',width:100,formatter:function(value){
+	  		    	return new Date(value).Format("yyyy-MM-dd");
+	  		    }},
+	  		    {field:'dep',title:'部门编号',width:100,formatter:function(value){
+	  		    	return value.name;
+	  		    }},
+
+				{field:'-',title:'操作',width:200,formatter: function(value,row,index){
+					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit(" + row.uuid + ')">修改</a>';
+					oper += ' <a href="javascript:void(0)" onclick="del(' + row.uuid + ')">删除</a>';
+					return oper;
+				}}
+				]];
+
+</script>
+</head>
+<body>
+<div class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+	<div style="height:2px;"></div>
+	<form id="searchForm">
+			登陆名：<input name="t1.username" >
+	真实姓名：<input name="t1.name" >
+	性别：<input name="t1.gender" type="radio" value="">全部 
+		<input name="t1.gender" type="radio" value="0">女
+		<input name="t1.gender" type="radio" value="1">男
+	<br />
+	邮件地址：<input name="t1.email" >
+	联系电话：<input name="t1.tele" >
+	联系地址：<input name="t1.address" >
+	<br />
+	出生年月日：<input name="t1.birthday" class="easyui-datebox"> 到 <input name="t2.birthday" class="easyui-datebox">
+	部门：<input name="t1.dep.uuid" class="easyui-combobox" data-options="
+					url:'dep_list', textField:'name', valueField:'uuid'
+				">
+
+		<button type="button" id="btnSearch">查询</button>
+	</form>
+	<div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<div id="editDlg">
+	<form id="editForm">
+			<input name="t.uuid" type="hidden"> 
+
+		<table>
+			<tr>
+				<td>登陆名</td><td><input name="t.username" class="easyui-validatebox" data-options="
+					required:true,missingMessage:'登陆名不能为空!'
+					">
+				</td>
+			</tr>
+			<tr>
+				<td>真实姓名</td><td><input name="t.name"> </td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>
+					<input name="t.gender" type="radio" value="0">女
+					<input name="t.gender" type="radio" value="1">男
+				</td>
+			</tr>
+			<tr>
+				<td>邮件地址</td><td><input name="t.email" class="easyui-validatebox" data-options="
+				required:true,validType:'email',invalidMessage:'Email格式不正确'
+				"> </td>
+			</tr>
+			<tr>
+				<td>联系电话</td><td><input name="t.tele"> </td>
+			</tr>
+			<tr>
+				<td>联系地址</td><td><input name="t.address"> </td>
+			</tr>
+			<tr>
+				<td>出生年月日</td><td><input name="t.birthday" class="easyui-datebox" editable="false"> </td>
+			</tr>
+			<tr>
+				<td>部门</td><td><input name="t.dep.uuid" class="easyui-combobox" data-options="
+					url:'dep_list', textField:'name', valueField:'uuid',required:true
+				"> </td>
+			</tr>
+
+		</table>
+		<button id="btnSave" type="button">保存</button>
+	</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.xlr.erp.entity.Role" table="role" >
+        <id name="uuid" >
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"> <param name="sequence_name">role_seq</param> </generator>
+        </id>
+
+        <property name="name" /> 
+ 		<!-- 多对多关联配置， 角色权限中间表 role_menu -->
+ 		<bag name="menus" order-by="menuuuid" table="role_menu">
+ 			<key column="roleuuid"></key>
+ 			<many-to-many class="cn.xlr.erp.entity.Menu" column="menuuuid"></many-to-many>
+ 		</bag>
+ 		
+ 		<bag name="emps" order-by="empuuid" table="emp_role">
+ 			<key column="roleuuid"></key>
+ 			<many-to-many class="cn.xlr.erp.entity.Emp" column="empuuid"></many-to-many>
+ 		</bag>
+    </class>
+</hibernate-mapping>

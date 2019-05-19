@@ -1,0 +1,7 @@
+127.0.0.1 - - [13/Jan/2019:13:43:46 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 324 http-bio-9090-exec-1 411
+127.0.0.1 - - [13/Jan/2019:13:43:51 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 179 http-bio-9090-exec-2 21
+127.0.0.1 - - [13/Jan/2019:13:43:55 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 179 http-bio-9090-exec-3 20
+127.0.0.1 - - [13/Jan/2019:13:43:58 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 324 http-bio-9090-exec-4 19
+127.0.0.1 - - [13/Jan/2019:18:36:56 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 324 http-bio-9090-exec-1 302
+127.0.0.1 - - [13/Jan/2019:18:37:59 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 179 http-bio-9090-exec-3 18
+127.0.0.1 - - [13/Jan/2019:19:32:01 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 500 330 http-bio-9090-exec-5 26

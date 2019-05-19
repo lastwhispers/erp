@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.redsum.bos.entity.Waybill" table="waybill" >
+        <id name="sn" >
+            <generator class="native"></generator>
+        </id>
+
+        <property name="userid" /> 
+        <property name="toaddress" /> 
+        <property name="addressee" /> 
+        <property name="tele" /> 
+        <property name="info" /> 
+        <property name="state" /> 
+ 
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>订单明细管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript">
+	var name="orderdetail";
+	var columns=[[
+	  		    {field:'uuid',title:'编号',width:100},
+	  		    {field:'goodsuuid',title:'商品编号',width:100},
+	  		    {field:'goodsname',title:'商品名称',width:100},
+	  		    {field:'price',title:'价格',width:100},
+	  		    {field:'num',title:'数量',width:100},
+	  		    {field:'money',title:'金额',width:100},
+	  		    {field:'endtime',title:'结束日期',width:100},
+	  		    {field:'ender',title:'库管员',width:100},
+	  		    {field:'storeuuid',title:'仓库编号',width:100},
+	  		    {field:'state',title:'采购：0=未入库，1=已入库  销售：0=未出库，1=已出库',width:100},
+	  		    {field:'ordersuuid',title:'订单编号',width:100},
+
+				{field:'-',title:'操作',width:200,formatter: function(value,row,index){
+					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit(" + row.uuid + ')">修改</a>';
+					oper += ' <a href="javascript:void(0)" onclick="del(' + row.uuid + ')">删除</a>';
+					return oper;
+				}}
+				]];
+
+</script>
+</head>
+<body>
+<div class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+	<div style="height:2px;"></div>
+	<form id="searchForm">
+			商品编号：<input name="t1.goodsuuid" >
+	商品名称：<input name="t1.goodsname" >
+	价格：<input name="t1.price" >
+	数量：<input name="t1.num" >
+	金额：<input name="t1.money" >
+	结束日期：<input name="t1.endtime" >
+	库管员：<input name="t1.ender" >
+	仓库编号：<input name="t1.storeuuid" >
+	采购：0=未入库，1=已入库  销售：0=未出库，1=已出库：<input name="t1.state" >
+	订单编号：<input name="t1.ordersuuid" >
+
+		<button type="button" id="btnSearch">查询</button>
+	</form>
+	<div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<div id="editDlg">
+	<form id="editForm">
+			<input name="t.uuid" type="hidden"> 
+
+		<table>
+						<tr>
+				<td>商品编号</td><td><input name="t.goodsuuid"> </td>
+			</tr>
+			<tr>
+				<td>商品名称</td><td><input name="t.goodsname"> </td>
+			</tr>
+			<tr>
+				<td>价格</td><td><input name="t.price"> </td>
+			</tr>
+			<tr>
+				<td>数量</td><td><input name="t.num"> </td>
+			</tr>
+			<tr>
+				<td>金额</td><td><input name="t.money"> </td>
+			</tr>
+			<tr>
+				<td>结束日期</td><td><input name="t.endtime"> </td>
+			</tr>
+			<tr>
+				<td>库管员</td><td><input name="t.ender"> </td>
+			</tr>
+			<tr>
+				<td>仓库编号</td><td><input name="t.storeuuid"> </td>
+			</tr>
+			<tr>
+				<td>采购：0=未入库，1=已入库  销售：0=未出库，1=已出库</td><td><input name="t.state"> </td>
+			</tr>
+			<tr>
+				<td>订单编号</td><td><input name="t.ordersuuid"> </td>
+			</tr>
+
+		</table>
+		<button id="btnSave" type="button">保存</button>
+	</form>
+</div>
+
+</body>
+</html>

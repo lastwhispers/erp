@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript">
+	var name="waybilldetail";
+	var columns=[[
+	  		    {field:'id',title:'ID',width:100},
+	  		    {field:'sn',title:'运单号',width:100},
+	  		    {field:'exedate',title:'执行日期',width:100},
+	  		    {field:'exetime',title:'执行时间',width:100},
+	  		    {field:'info',title:'执行信息',width:100},
+
+				{field:'-',title:'操作',width:200,formatter: function(value,row,index){
+					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit(" + row.id + ')">修改</a>';
+					oper += ' <a href="javascript:void(0)" onclick="del(' + row.id + ')">删除</a>';
+					return oper;
+				}}
+				]];
+
+</script>
+</head>
+<body>
+<div class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+	<div style="height:2px;"></div>
+	<form id="searchForm">
+		运单号：<input name="t1.sn" >
+	执行日期：<input name="t1.exedate" >
+	执行时间：<input name="t1.exetime" >
+	执行信息：<input name="t1.info" >
+
+		<button type="button" id="btnSearch">查询</button>
+	</form>
+	<div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<div id="editDlg">
+	<form id="editForm">
+			<input name="t.id" type="hidden"> 
+
+		<table>
+						<tr>
+				<td>运单号</td><td><input name="t.sn"> </td>
+			</tr>
+			<tr>
+				<td>执行日期</td><td><input name="t.exedate"> </td>
+			</tr>
+			<tr>
+				<td>执行时间</td><td><input name="t.exetime"> </td>
+			</tr>
+			<tr>
+				<td>执行信息</td><td><input name="t.info"> </td>
+			</tr>
+
+		</table>
+		<button id="btnSave" type="button">保存</button>
+	</form>
+</div>
+
+</body>
+</html>

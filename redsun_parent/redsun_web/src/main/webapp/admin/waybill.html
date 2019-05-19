@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript">
+	var name="waybill";
+	var columns=[[
+	  		    {field:'sn',title:'运单号',width:100},
+	  		    {field:'userid',title:'用户ID',width:100},
+	  		    {field:'toaddress',title:'收货地址',width:100},
+	  		    {field:'addressee',title:'收货人',width:100},
+	  		    {field:'tele',title:'收件人电话',width:100},
+	  		    {field:'info',title:'运单详情',width:100},
+	  		    {field:'state',title:'运单状态',width:100},
+
+				{field:'-',title:'操作',width:200,formatter: function(value,row,index){
+					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit(" + row.sn + ')">修改</a>';
+					oper += ' <a href="javascript:void(0)" onclick="del(' + row.sn + ')">删除</a>';
+					return oper;
+				}}
+				]];
+
+</script>
+</head>
+<body>
+<div class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+	<div style="height:2px;"></div>
+	<form id="searchForm">
+		用户ID：<input name="t1.userid" >
+	收货地址：<input name="t1.toaddress" >
+	收货人：<input name="t1.addressee" >
+	收件人电话：<input name="t1.tele" >
+	运单详情：<input name="t1.info" >
+	运单状态：<input name="t1.state" >
+
+		<button type="button" id="btnSearch">查询</button>
+	</form>
+	<div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<div id="editDlg">
+	<form id="editForm">
+			<input name="t.sn" type="hidden"> 
+
+		<table>
+						<tr>
+				<td>用户ID</td><td><input name="t.userid"> </td>
+			</tr>
+			<tr>
+				<td>收货地址</td><td><input name="t.toaddress"> </td>
+			</tr>
+			<tr>
+				<td>收货人</td><td><input name="t.addressee"> </td>
+			</tr>
+			<tr>
+				<td>收件人电话</td><td><input name="t.tele"> </td>
+			</tr>
+			<tr>
+				<td>运单详情</td><td><input name="t.info"> </td>
+			</tr>
+			<tr>
+				<td>运单状态</td><td><input name="t.state"> </td>
+			</tr>
+
+		</table>
+		<button id="btnSave" type="button">保存</button>
+	</form>
+</div>
+
+</body>
+</html>

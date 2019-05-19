@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>菜单管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript">
+	var name="menu";
+	var columns=[[
+	  		    {field:'menuid',title:'菜单ID',width:100},
+	  		    {field:'menuname',title:'菜单名称',width:100},
+	  		    {field:'icon',title:'图标',width:100},
+	  		    {field:'url',title:'URL',width:100},
+	  		    {field:'pid',title:'上级菜单ID',width:100},
+
+				{field:'-',title:'操作',width:200,formatter: function(value,row,index){
+					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit(" + row.menuid + ')">修改</a>';
+					oper += ' <a href="javascript:void(0)" onclick="del(' + row.menuid + ')">删除</a>';
+					return oper;
+				}}
+				]];
+
+</script>
+</head>
+<body>
+<div class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+	<div style="height:2px;"></div>
+	<form id="searchForm">
+			菜单名称：<input name="t1.menuname" >
+	图标：<input name="t1.icon" >
+	URL：<input name="t1.url" >
+	上级菜单ID：<input name="t1.pid" >
+
+		<button type="button" id="btnSearch">查询</button>
+	</form>
+	<div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<div id="editDlg">
+	<form id="editForm">
+			<input name="t.menuid" type="hidden"> 
+
+		<table>
+						<tr>
+				<td>菜单名称</td><td><input name="t.menuname"> </td>
+			</tr>
+			<tr>
+				<td>图标</td><td><input name="t.icon"> </td>
+			</tr>
+			<tr>
+				<td>URL</td><td><input name="t.url"> </td>
+			</tr>
+			<tr>
+				<td>上级菜单ID</td><td><input name="t.pid"> </td>
+			</tr>
+
+		</table>
+		<button id="btnSave" type="button">保存</button>
+	</form>
+</div>
+
+</body>
+</html>

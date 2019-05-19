@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>盘盈盘亏管理</title>
+<link rel="stylesheet" type="text/css" href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript">
+	var name="inventory";
+	var columns=[[
+	  		    {field:'uuid',title:'编号',width:100},
+	  		    {field:'goodsuuid',title:'商品',width:100},
+	  		    {field:'storeuuid',title:'仓库',width:100},
+	  		    {field:'num',title:'数量',width:100},
+	  		    {field:'type',title:'类型',width:100},
+	  		    {field:'createtime',title:'登记日期',width:100},
+	  		    {field:'checktime',title:'审核日期',width:100},
+	  		    {field:'creater',title:'登记人',width:100},
+	  		    {field:'checker',title:'审核人',width:100},
+	  		    {field:'state',title:'状态',width:100},
+	  		    {field:'remark',title:'备注',width:100},
+
+				{field:'-',title:'操作',width:200,formatter: function(value,row,index){
+					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit(" + row.uuid + ')">修改</a>';
+					oper += ' <a href="javascript:void(0)" onclick="del(' + row.uuid + ')">删除</a>';
+					return oper;
+				}}
+				]];
+
+</script>
+</head>
+<body>
+<div class="easyui-panel" style="padding-left:4px;border-bottom:0px;">
+	<div style="height:2px;"></div>
+	<form id="searchForm">
+			商品：<input name="t1.goodsuuid" >
+	仓库：<input name="t1.storeuuid" >
+	数量：<input name="t1.num" >
+	类型：<input name="t1.type" >
+	登记日期：<input name="t1.createtime" >
+	审核日期：<input name="t1.checktime" >
+	登记人：<input name="t1.creater" >
+	审核人：<input name="t1.checker" >
+	状态：<input name="t1.state" >
+	备注：<input name="t1.remark" >
+
+		<button type="button" id="btnSearch">查询</button>
+	</form>
+	<div style="height:2px;"></div>
+</div>
+<table id="grid"></table>
+
+<div id="editDlg">
+	<form id="editForm">
+			<input name="t.uuid" type="hidden"> 
+
+		<table>
+						<tr>
+				<td>商品</td><td><input name="t.goodsuuid"> </td>
+			</tr>
+			<tr>
+				<td>仓库</td><td><input name="t.storeuuid"> </td>
+			</tr>
+			<tr>
+				<td>数量</td><td><input name="t.num"> </td>
+			</tr>
+			<tr>
+				<td>类型</td><td><input name="t.type"> </td>
+			</tr>
+			<tr>
+				<td>登记日期</td><td><input name="t.createtime"> </td>
+			</tr>
+			<tr>
+				<td>审核日期</td><td><input name="t.checktime"> </td>
+			</tr>
+			<tr>
+				<td>登记人</td><td><input name="t.creater"> </td>
+			</tr>
+			<tr>
+				<td>审核人</td><td><input name="t.checker"> </td>
+			</tr>
+			<tr>
+				<td>状态</td><td><input name="t.state"> </td>
+			</tr>
+			<tr>
+				<td>备注</td><td><input name="t.remark"> </td>
+			</tr>
+
+		</table>
+		<button id="btnSave" type="button">保存</button>
+	</form>
+</div>
+
+</body>
+</html>
