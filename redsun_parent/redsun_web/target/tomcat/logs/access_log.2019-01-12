@@ -1,2 +1,0 @@
-127.0.0.1 - - [12/Jan/2019:19:13:01 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 325 http-bio-9090-exec-1 455
-127.0.0.1 - - [12/Jan/2019:19:13:25 +0800] "POST /redsun/ws/waybill?wsdl HTTP/1.1" 200 215 http-bio-9090-exec-3 160
