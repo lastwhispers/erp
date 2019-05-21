@@ -9,11 +9,22 @@
 
 	<properties>
 		<hibernate.version>5.0.7.Final</hibernate.version>
-		<spring.version>4.2.4.RELEASE</spring.version>
-		<struts.version>2.3.24</struts.version>
+		<spring.version>4.3.17.RELEASE</spring.version>
+		<struts.version>2.3.35</struts.version>
 		<slf4j.version>1.6.6</slf4j.version>
 		<log4j.version>1.2.12</log4j.version>
-		<shiro.ver>1.2.3</shiro.ver>
+		<shiro.version>1.2.3</shiro.version>
+		<oracle.version>12.1.0.1-atlassian-hosted</oracle.version>
+		<aspectjweaver.version>1.8.7</aspectjweaver.version>
+		<fastjson.version>1.2.31</fastjson.version>
+		<junit.version>4.9</junit.version>
+		<jstl.version>1.2</jstl.version>
+		<servletapi.version>2.5</servletapi.version>
+		<mail.version>1.4.4</mail.version>
+		<quartz.version>2.2.3</quartz.version>
+		<poi.version>3.15</poi.version>
+		<cxf.version>3.1.10</cxf.version>
+		<jedis.version>2.8.2</jedis.version>
 	</properties>
 
 	<dependencies>
@@ -65,7 +76,7 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.7</version>
+			<version>${aspectjweaver.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.struts</groupId>
@@ -105,110 +116,104 @@
 		<!-- log end -->
 
 		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-aspectj</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		
 		<!-- 数据库驱动 -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.oracle</groupId> -->
-		<!-- <artifactId>ojdbc6</artifactId> -->
-		<!-- <version>11.2.0.1.0</version> -->
-		<!-- <scope>runtime</scope> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
-			<version>12.1.0.1-atlassian-hosted</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<version>${oracle.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.1.37</version>
+			<version>${fastjson.version}</version>
 		</dependency>
 
+		<!-- 测试 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.9</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
+		<!-- jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
+		<!-- servlet-api -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<version>${servletapi.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-core</artifactId>
-			<version>${shiro.ver}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-web</artifactId>
-			<version>${shiro.ver}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>${shiro.ver}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-aspectj</artifactId>
-			<version>${shiro.ver}</version>
-		</dependency>
 		<!-- 邮件 -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
-			<version>1.4.4</version>
+			<version>${mail.version}</version>
 		</dependency>
 
 		<!-- quartz定时任务 -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
-			<version>2.2.3</version>
+			<version>${quartz.version}</version>
 		</dependency>
+
 		<!-- poi -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>3.15</version>
+			<version>${poi.version}</version>
 		</dependency>
+
 		<!-- cxf -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>3.1.10</version>
+			<version>${cxf.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>3.1.10</version>
+			<version>${cxf.version}</version>
 		</dependency>
+
 		<!-- redis -->
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
-			<version>2.8.2</version>
+			<version>${jedis.version}</version>
 		</dependency>
 	</dependencies>
 
