@@ -101,7 +101,7 @@ public class SupplierAction extends BaseAction<Supplier> {
 	 */
 	public void doImport(){
 		//文件类型判断
-		if(!"application/vnd.ms-excel".equals(fileContentType)){
+		if(!"application/vnd.ms-excel".equals(fileContentType) && !("application/octet-stream").equals(fileContentType)){
 			ajaxReturn(false, "上传的文件必须为excel文件");
 			return;
 		}

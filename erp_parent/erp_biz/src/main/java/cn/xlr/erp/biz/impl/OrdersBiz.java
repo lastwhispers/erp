@@ -56,22 +56,22 @@ public class OrdersBiz extends BaseBiz<Orders> implements IOrdersBiz {
 	}
 
 	public void add(Orders orders) {
-		Subject subject = SecurityUtils.getSubject();
-		//采购订单申请
-		if(Orders.TYPE_IN.equals(orders.getType())){
-			//代码级别的权限控制
-			//判断当前登陆的用户是否有 采购订单申请 的权限
-			if(!subject.isPermitted("采购订单申请")){
-				throw new ErpException("权限不足");
-			}
-		}else if(Orders.TYPE_OUT.equals(orders.getType())){
-			if(!subject.isPermitted("销售订单录入")){
-				throw new ErpException("权限不足");
-			}
-		}else{
-			throw new ErpException("非法参数");
-		}
-		
+//		Subject subject = SecurityUtils.getSubject();
+		// 采购订单申请
+//		if(Orders.TYPE_IN.equals(orders.getType())){
+//			//代码级别的权限控制
+//			//判断当前登陆的用户是否有 采购订单申请 的权限
+//			if(!subject.isPermitted("采购订单申请")){
+//				throw new ErpException("权限不足");
+//			}
+//		}else if(Orders.TYPE_OUT.equals(orders.getType())){
+//			if(!subject.isPermitted("销售订单录入")){
+//				throw new ErpException("权限不足");
+//			}
+//		}else{
+//			throw new ErpException("非法参数");
+//		}
+
 		// 1. 设置订单的状态
 		orders.setState(Orders.STATE_CREATE);
 		// 2. 订单的类型

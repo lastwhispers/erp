@@ -12,7 +12,6 @@
 		<slf4j.version>1.6.6</slf4j.version>
 		<log4j.version>1.2.12</log4j.version>
 		<shiro.version>1.2.3</shiro.version>
-		<oracle.version>12.1.0.1-atlassian-hosted</oracle.version>
 		<aspectjweaver.version>1.8.7</aspectjweaver.version>
 		<fastjson.version>1.2.47</fastjson.version>
 		<junit.version>4.9</junit.version>
@@ -139,9 +138,9 @@
 		
 		<!-- 数据库驱动 -->
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${oracle.version}</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
 			<scope>runtime</scope>
 		</dependency>
 
