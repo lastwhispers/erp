@@ -113,7 +113,7 @@
 
 ## 4.7 更多详情
 
-更多项目详情请求参照项目文档和源码
+更多项目详情请参照项目文档和源码
 
 ![更多详情](https://upload-images.jianshu.io/upload_images/5336514-08edb2a59d419368.gif?imageMogr2/auto-orient/strip)
 
