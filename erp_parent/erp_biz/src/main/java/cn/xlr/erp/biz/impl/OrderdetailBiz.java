@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
-import com.redsum.bos.ws.impl.IWaybillWs;
+//import com.redsum.bos.ws.impl.IWaybillWs;
 
 import cn.xlr.erp.biz.IOrderdetailBiz;
 import cn.xlr.erp.dao.IOrderdetailDao;
@@ -27,13 +27,13 @@ public class OrderdetailBiz extends BaseBiz<Orderdetail> implements IOrderdetail
 	private IOrderdetailDao orderdetailDao;
 	private IStoredetailDao storedetailDao;
 	/**物流系统*/
-	private IWaybillWs waybillWs;
+	//private IWaybillWs waybillWs;
 	/**供应商及客户*/
 	private ISupplierDao supplierDao;
 	
-	public void setWaybillWs(IWaybillWs waybillWs) {
-		this.waybillWs = waybillWs;
-	}
+	//public void setWaybillWs(IWaybillWs waybillWs) {
+	//	this.waybillWs = waybillWs;
+	//}
 
 	public void setSupplierDao(ISupplierDao supplierDao) {
 		this.supplierDao = supplierDao;
@@ -196,9 +196,10 @@ public class OrderdetailBiz extends BaseBiz<Orderdetail> implements IOrderdetail
 			//获取顾客信息
 			Supplier supplier = supplierDao.get(orders.getSupplieruuid());
 			//调用红日物流bos系统接口
-			Long waybillsn = waybillWs.addWaybill(1L, supplier.getAddress(), supplier.getName(), supplier.getTele(), "无");
+			//Long waybillsn = waybillWs.addWaybill(1L, supplier.getAddress(), supplier.getName(), supplier.getTele(), "无");
 			//设置订单物流号
-			orders.setWaybillsn(waybillsn);
+			//orders.setWaybillsn(waybillsn);
+			orders.setWaybillsn(1L);
 		}
 	}
 	

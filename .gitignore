@@ -18,6 +18,9 @@
 *.iml
 *.ipr
 
+erp_parent/.idea
+erp_parent/erp_parent.iml
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
