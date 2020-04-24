@@ -1,4 +1,4 @@
->该项目文档、源码地址：https://github.com/ggb2312/Erp  
+>该项目文档、源码地址：https://github.com/lastwhispers/erp
 该系统的权限部分已单独提取出来 https://www.jianshu.com/p/43b007b2973e
 
 # 1. 项目简介
