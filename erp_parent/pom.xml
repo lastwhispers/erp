@@ -16,7 +16,7 @@
 		<shiro.version>1.2.3</shiro.version>
 		<oracle.version>12.1.0.1-atlassian-hosted</oracle.version>
 		<aspectjweaver.version>1.8.7</aspectjweaver.version>
-		<fastjson.version>1.2.47</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<junit.version>4.9</junit.version>
 		<jstl.version>1.2</jstl.version>
 		<servletapi.version>2.5</servletapi.version>
