@@ -6,7 +6,7 @@
 	<packaging>pom</packaging>
   
 	<properties>
-		<hibernate.version>5.0.7.Final</hibernate.version>
+		<hibernate.version>5.3.20.Final</hibernate.version>
 		<spring.version>4.3.18.RELEASE</spring.version>
 		<struts.version>2.3.35</struts.version>
 		<slf4j.version>1.6.6</slf4j.version>
