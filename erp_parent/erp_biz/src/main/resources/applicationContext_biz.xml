@@ -43,7 +43,6 @@
 		<property name="orderdetailDao" ref="orderdetailDao"></property>
 		<property name="storedetailDao" ref="storedetailDao"></property>
 		<property name="storeoperDao" ref="storeoperDao"></property>
-		<property name="supplierDao" ref="supplierDao"></property>
 	</bean>
 	<!-- 订单 -->
 	<bean id="ordersBiz" class="cn.xlr.erp.biz.impl.OrdersBiz">

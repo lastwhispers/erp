@@ -3,6 +3,8 @@ package cn.xlr.erp.dao.impl;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import cn.xlr.erp.dao.IMenuDao;
 import cn.xlr.erp.entity.Menu;
@@ -22,6 +24,21 @@ public class MenuDao extends BaseDao<Menu> implements IMenuDao {
 	 */
 	public DetachedCriteria getDetachedCriteria(Menu menu1,Menu menu2,Object param){
 		DetachedCriteria dc=DetachedCriteria.forClass(Menu.class);
+		//原先这里什么都不加，菜单页的查询框传了条件也被丢弃
+		if(menu1!=null){
+			if(null != menu1.getMenuname() && menu1.getMenuname().trim().length()>0){
+				dc.add(Restrictions.like("menuname", menu1.getMenuname(), MatchMode.ANYWHERE));
+			}
+			if(null != menu1.getIcon() && menu1.getIcon().trim().length()>0){
+				dc.add(Restrictions.like("icon", menu1.getIcon(), MatchMode.ANYWHERE));
+			}
+			if(null != menu1.getUrl() && menu1.getUrl().trim().length()>0){
+				dc.add(Restrictions.like("url", menu1.getUrl(), MatchMode.ANYWHERE));
+			}
+			if(null != menu1.getPid() && menu1.getPid().trim().length()>0){
+				dc.add(Restrictions.eq("pid", menu1.getPid()));
+			}
+		}
 		return dc;
 	}
 	/**

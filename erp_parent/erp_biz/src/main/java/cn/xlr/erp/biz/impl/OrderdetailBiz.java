@@ -8,12 +8,10 @@ import cn.xlr.erp.biz.IOrderdetailBiz;
 import cn.xlr.erp.dao.IOrderdetailDao;
 import cn.xlr.erp.dao.IStoredetailDao;
 import cn.xlr.erp.dao.IStoreoperDao;
-import cn.xlr.erp.dao.ISupplierDao;
 import cn.xlr.erp.entity.Orderdetail;
 import cn.xlr.erp.entity.Orders;
 import cn.xlr.erp.entity.Storedetail;
 import cn.xlr.erp.entity.Storeoper;
-import cn.xlr.erp.entity.Supplier;
 import cn.xlr.erp.exception.ErpException;
 /**
  * 订单明细业务逻辑类
@@ -24,12 +22,6 @@ public class OrderdetailBiz extends BaseBiz<Orderdetail> implements IOrderdetail
 
 	private IOrderdetailDao orderdetailDao;
 	private IStoredetailDao storedetailDao;
-	/**供应商及客户*/
-	private ISupplierDao supplierDao;
-
-	public void setSupplierDao(ISupplierDao supplierDao) {
-		this.supplierDao = supplierDao;
-	}
 
 	public void setStoredetailDao(IStoredetailDao storedetailDao) {
 		this.storedetailDao = storedetailDao;
@@ -184,14 +176,6 @@ public class OrderdetailBiz extends BaseBiz<Orderdetail> implements IOrderdetail
 			orders.setState(Orders.STATE_OUT);
 			orders.setEndtime(detail.getEndtime());
 			orders.setEnder(empuuid);
-			
-			//获取顾客信息
-			Supplier supplier = supplierDao.get(orders.getSupplieruuid());
-			//调用红日物流bos系统接口
-			//Long waybillsn = waybillWs.addWaybill(1L, supplier.getAddress(), supplier.getName(), supplier.getTele(), "无");
-			//设置订单物流号
-			//orders.setWaybillsn(waybillsn);
-			orders.setWaybillsn(1L);
 		}
 	}
 	

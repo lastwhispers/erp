@@ -22,7 +22,7 @@ GRANT ALL ON erp.* TO 'erp'@'127.0.0.1'; GRANT ALL ON erp.* TO 'erp'@'localhost'
 
 # 必须显式指定连接字符集，否则客户端按 latin1 灌入，中文会变成双重编码
 echo "==> 3/4 导入结构与数据"
-for f in 1_schema 2_data 3_view_storealert 4_auto_increment; do
+for f in 1_schema 2_data 3_view_storealert 4_auto_increment 5_unique_constraints; do
   mysql -u root --default-character-set=utf8mb4 erp < "$OUT/$f.sql"
 done
 

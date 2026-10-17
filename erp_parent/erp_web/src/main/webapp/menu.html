@@ -20,8 +20,8 @@
 	  		    {field:'pid',title:'上级菜单ID',width:100},
 
 				{field:'-',title:'操作',width:200,formatter: function(value,row,index){
-					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit(" + row.menuid + ')">修改</a>';
-					oper += ' <a href="javascript:void(0)" onclick="del(' + row.menuid + ')">删除</a>';
+					var oper = "<a href=\"javascript:void(0)\" onclick=\"edit('" + row.menuid + '\')">修改</a>';
+					oper += ' <a href="javascript:void(0)" onclick="del(\'' + row.menuid + '\')">删除</a>';
 					return oper;
 				}}
 				]];
