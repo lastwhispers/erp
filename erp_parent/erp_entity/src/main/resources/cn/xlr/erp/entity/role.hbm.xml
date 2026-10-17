@@ -4,7 +4,7 @@
 <hibernate-mapping>
     <class name="cn.xlr.erp.entity.Role" table="role" >
         <id name="uuid" >
-            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"> <param name="sequence_name">role_seq</param> </generator>
+            <generator class="identity"/>
         </id>
 
         <property name="name" /> 

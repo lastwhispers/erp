@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSON;
 import cn.xlr.erp.biz.IMenuBiz;
 import cn.xlr.erp.dao.IMenuDao;
 import cn.xlr.erp.entity.Menu;
-import redis.clients.jedis.Jedis;
+import cn.xlr.erp.util.LocalCache;
 /**
  * 菜单业务逻辑类
  * @author Administrator
@@ -17,15 +17,15 @@ import redis.clients.jedis.Jedis;
 public class MenuBiz extends BaseBiz<Menu> implements IMenuBiz {
 
 	private IMenuDao menuDao;
-	private Jedis jedis;
+	private LocalCache menuCache;
 	
 	public void setMenuDao(IMenuDao menuDao) {
 		this.menuDao = menuDao;
 		super.setBaseDao(this.menuDao);
 	}
 	
-	public void setJedis(Jedis jedis) {
-		this.jedis = jedis;
+	public void setMenuCache(LocalCache menuCache) {
+		this.menuCache = menuCache;
 	}
 
 
@@ -34,12 +34,12 @@ public class MenuBiz extends BaseBiz<Menu> implements IMenuBiz {
 	 */
 	@Override
 	public List<Menu> getMenuListByEmpuuid(Long uuid) {
-		String menuListJson = jedis.get("menuList_"+uuid);
+		String menuListJson = menuCache.get("menuList_"+uuid);
 		List<Menu> menuList = null;
 		if(menuListJson == null) {
 			//从数据库中查出来，放入缓存中
 			menuList = menuDao.getMenusByEmpuuid(uuid);
-			jedis.set("menuList_"+uuid, JSON.toJSONString(menuList));
+			menuCache.set("menuList_"+uuid, JSON.toJSONString(menuList));
 			System.out.println("从数据库中查询menuList");
 		}else {
 			//直接从缓存中拿

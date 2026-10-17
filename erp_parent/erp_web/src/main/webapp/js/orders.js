@@ -82,31 +82,6 @@ $(function(){
 			var toolbar = options.toolbar;
 			var t = new Array();
 			t.push(toolbar[0]);
-			if(toolbar.length > 0){
-				//type=1采购；2：销售 
-				//state=采购：0未审核,1已审核,2已确认,3已入库；销售：0未出库,1已出库
-				//销售订单已经出库
-				if(rowData.state*1 == 1 && rowData.type * 1 == 2){
-					t.push({
-						text:'运单详情',
-						iconCls:'icon-search',
-						handler:function(){
-							$('#waybillDlg').dialog('open');
-							$('#waybillgrid').datagrid({
-								url: 'orders_waybilldetailList?waybillsn=' + $('#waybillsn').html(),
-								columns:[[
-									{field:'exedate',title:'执行日期',width:100},
-									{field:'exetime',title:'执行时间',width:100},
-									{field:'info',title:'执行信息',width:100}
-								]],
-								//如果为true，则显示一个行号列。
-								rownumbers:true
-							});
-						}
-					});
-					
-				}
-			}
 			//重新渲染工具栏
 					$('#ordersDlg').dialog({
 						toolbar:t

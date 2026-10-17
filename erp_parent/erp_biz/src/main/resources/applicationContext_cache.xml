@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="jedis" class="redis.clients.jedis.Jedis">
-		<constructor-arg index="0" value="192.168.108.128"></constructor-arg>
-	</bean>
+	<bean id="menuCache" class="cn.xlr.erp.util.LocalCache"></bean>
 
 </beans>
 	

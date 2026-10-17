@@ -44,7 +44,6 @@
 	<!-- 订单 -->
 	<bean id="ordersAction" class="cn.xlr.erp.action.OrdersAction" scope="prototype">
 		<property name="ordersBiz" ref="ordersBiz"></property>
-		<property name="waybillWs" ref="waybillClient"></property>
 	</bean>
 	<!-- 退货订单明细 -->
 	<bean id="returnorderdetailAction" class="cn.xlr.erp.action.ReturnorderdetailAction" scope="prototype">

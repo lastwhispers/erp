@@ -9,7 +9,7 @@ import cn.xlr.erp.entity.Emp;
 import cn.xlr.erp.entity.Menu;
 import cn.xlr.erp.entity.Role;
 import cn.xlr.erp.entity.Tree;
-import redis.clients.jedis.Jedis;
+import cn.xlr.erp.util.LocalCache;
 /**
  * 角色业务逻辑类
  * @author Administrator
@@ -19,7 +19,7 @@ public class RoleBiz extends BaseBiz<Role> implements IRoleBiz {
 
 	private IRoleDao roleDao;
 	private IMenuDao menuDao;
-	private Jedis jedis;
+	private LocalCache menuCache;
 	
 	public void setRoleDao(IRoleDao roleDao) {
 		this.roleDao = roleDao;
@@ -30,8 +30,8 @@ public class RoleBiz extends BaseBiz<Role> implements IRoleBiz {
 		this.menuDao = menuDao;
 	}
 
-	public void setJedis(Jedis jedis) {
-		this.jedis = jedis;
+	public void setMenuCache(LocalCache menuCache) {
+		this.menuCache = menuCache;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class RoleBiz extends BaseBiz<Role> implements IRoleBiz {
 			//更新角色权限菜单后，清空该角色下的用户缓存
 			System.out.println("清空该角色下的用户缓存");
 			for (Emp emp : role.getEmps()) {
-				jedis.del("menuList_"+emp.getUuid());
+				menuCache.del("menuList_"+emp.getUuid());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

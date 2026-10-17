@@ -19,7 +19,7 @@
 	<bean id="empBiz" class="cn.xlr.erp.biz.impl.EmpBiz">
 		<property name="empDao" ref="empDao"></property>
 		<property name="roleDao" ref="roleDao"></property>
-		<property name="jedis" ref="jedis"></property>
+		<property name="menuCache" ref="menuCache"></property>
 	</bean>
 	<!-- 商品 -->
 	<bean id="goodsBiz" class="cn.xlr.erp.biz.impl.GoodsBiz">
@@ -36,14 +36,13 @@
 	<!-- 菜单 -->
 	<bean id="menuBiz" class="cn.xlr.erp.biz.impl.MenuBiz">
 		<property name="menuDao" ref="menuDao"></property>
-		<property name="jedis" ref="jedis"></property>
+		<property name="menuCache" ref="menuCache"></property>
 	</bean>
 	<!-- 订单明细 -->
 	<bean id="orderdetailBiz" class="cn.xlr.erp.biz.impl.OrderdetailBiz">
 		<property name="orderdetailDao" ref="orderdetailDao"></property>
 		<property name="storedetailDao" ref="storedetailDao"></property>
 		<property name="storeoperDao" ref="storeoperDao"></property>
-		<property name="waybillWs" ref="waybillClient"></property>
 		<property name="supplierDao" ref="supplierDao"></property>
 	</bean>
 	<!-- 订单 -->
@@ -64,7 +63,7 @@
 	<bean id="roleBiz" class="cn.xlr.erp.biz.impl.RoleBiz">
 		<property name="roleDao" ref="roleDao"></property>
 		<property name="menuDao" ref="menuDao"></property>
-		<property name="jedis" ref="jedis"></property>
+		<property name="menuCache" ref="menuCache"></property>
 	</bean>
 	<!-- 仓库 -->
 	<bean id="storeBiz" class="cn.xlr.erp.biz.impl.StoreBiz">

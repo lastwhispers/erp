@@ -12,7 +12,7 @@ import cn.xlr.erp.entity.Emp;
 import cn.xlr.erp.entity.Role;
 import cn.xlr.erp.entity.Tree;
 import cn.xlr.erp.exception.ErpException;
-import redis.clients.jedis.Jedis;
+import cn.xlr.erp.util.LocalCache;
 /**
  * 员工业务逻辑类
  * @author Administrator
@@ -24,10 +24,10 @@ public class EmpBiz extends BaseBiz<Emp> implements IEmpBiz {
 	
 	private IEmpDao empDao;
 	private IRoleDao roleDao;
-	private Jedis jedis;
+	private LocalCache menuCache;
 	
-	public void setJedis(Jedis jedis) {
-		this.jedis = jedis;
+	public void setMenuCache(LocalCache menuCache) {
+		this.menuCache = menuCache;
 	}
 	public void setEmpDao(IEmpDao empDao) {
 		this.empDao = empDao;
@@ -152,7 +152,7 @@ public class EmpBiz extends BaseBiz<Emp> implements IEmpBiz {
 		}
 		try {
 			//更新某用户的角色时，清空缓存
-			jedis.del("menuList_"+uuid);
+			menuCache.del("menuList_"+uuid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

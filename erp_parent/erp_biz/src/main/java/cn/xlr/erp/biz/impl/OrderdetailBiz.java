@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
-//import com.redsum.bos.ws.impl.IWaybillWs;
-
 import cn.xlr.erp.biz.IOrderdetailBiz;
 import cn.xlr.erp.dao.IOrderdetailDao;
 import cn.xlr.erp.dao.IStoredetailDao;
@@ -26,14 +24,8 @@ public class OrderdetailBiz extends BaseBiz<Orderdetail> implements IOrderdetail
 
 	private IOrderdetailDao orderdetailDao;
 	private IStoredetailDao storedetailDao;
-	/**物流系统*/
-	//private IWaybillWs waybillWs;
 	/**供应商及客户*/
 	private ISupplierDao supplierDao;
-	
-	//public void setWaybillWs(IWaybillWs waybillWs) {
-	//	this.waybillWs = waybillWs;
-	//}
 
 	public void setSupplierDao(ISupplierDao supplierDao) {
 		this.supplierDao = supplierDao;

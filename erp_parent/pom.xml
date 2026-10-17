@@ -8,13 +8,14 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hibernate.version>5.0.7.Final</hibernate.version>
 		<spring.version>4.3.18.RELEASE</spring.version>
 		<struts.version>2.3.35</struts.version>
 		<slf4j.version>1.6.6</slf4j.version>
 		<log4j.version>1.2.12</log4j.version>
 		<shiro.version>1.2.3</shiro.version>
-		<oracle.version>12.1.0.1-atlassian-hosted</oracle.version>
+		<mysql.version>9.1.0</mysql.version>
 		<aspectjweaver.version>1.8.7</aspectjweaver.version>
 		<fastjson.version>1.2.47</fastjson.version>
 		<junit.version>4.9</junit.version>
@@ -23,8 +24,8 @@
 		<mail.version>1.4.4</mail.version>
 		<quartz.version>2.2.3</quartz.version>
 		<poi.version>3.15</poi.version>
-		<cxf.version>3.1.10</cxf.version>
-		<jedis.version>2.8.2</jedis.version>
+		<jaxb.version>2.3.1</jaxb.version>
+		<jaxb.runtime.version>2.3.3</jaxb.runtime.version>
 	</properties>
 
 	<dependencies>
@@ -141,9 +142,9 @@
 		
 		<!-- 数据库驱动 -->
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${oracle.version}</version>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>${mysql.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -197,23 +198,17 @@
 			<version>${poi.version}</version>
 		</dependency>
 
-		<!-- cxf -->
+		<!-- Hibernate 解析 .hbm.xml 需要 JAXB；Java 11 起已从 JDK 移除 -->
 		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>${cxf.version}</version>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-
-		<!-- redis -->
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>${jedis.version}</version>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>${jaxb.runtime.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
@@ -239,6 +234,7 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
 				<configuration>
 					<!-- 指定端口 -->
 					<port>8888</port>
@@ -256,6 +252,5 @@
 		<module>erp_dao</module>
 		<module>erp_biz</module>
 		<module>erp_web</module>
-		<module>erp_client</module>
 	</modules>
 </project>

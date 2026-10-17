@@ -4,7 +4,7 @@
 <hibernate-mapping>
     <class name="cn.xlr.erp.entity.Menu" table="menu" >
         <id name="menuid" >
-            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator"> <param name="sequence_name">menu_seq</param> </generator>
+            <generator class="assigned"/>
         </id>
 
         <property name="menuname" /> 

@@ -9,8 +9,6 @@ import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.struts2.ServletActionContext;
 
 import com.alibaba.fastjson.JSON;
-import com.redsum.bos.ws.Waybilldetail;
-import com.redsum.bos.ws.impl.IWaybillWs;
 
 import cn.xlr.erp.biz.IOrdersBiz;
 import cn.xlr.erp.entity.Emp;
@@ -155,27 +153,5 @@ public class OrdersAction extends BaseAction<Orders> {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	private IWaybillWs waybillWs;
-	/**运单号*/
-	private Long waybillsn;
-	public void setWaybillWs(IWaybillWs waybillWs) {
-		this.waybillWs = waybillWs;
-	}
-	
-	public void setWaybillsn(Long waybillsn) {
-		this.waybillsn = waybillsn;
-	}
-
-	/**
-	 * 查询运单详情
-	 */
-	public void waybilldetailList() {
-		List<Waybilldetail> list = waybillWs.waybilldetailList(waybillsn);
-		write(JSON.toJSONString(list));
-	}
-	
-	
 
 }
