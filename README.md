@@ -10,9 +10,10 @@
 - 移除 CXF webservice 与 `erp_client` 模块（红日物流运单查询，本就是可选功能）
 - 补上 JAXB 依赖，因此 **Java 11 即可启动，不需要装 JDK 8**
 
-前提：本机有 MySQL 在跑，且 root 可免密连接。两条命令：
+前提：本机有 MySQL 在跑，且 root 可免密连接。以下脚本只存在于 `local-dev` 分支，先切过去再执行：
 
 ```bash
+git checkout local-dev
 ./tools/init-local-db.sh      # 建库、灌数据
 ./tools/run-local.sh          # 编译并启动，http://localhost:8888/erp/login.html
 ```
