@@ -35,4 +35,25 @@ public class MenuDao extends BaseDao<Menu> implements IMenuDao {
 		return (List<Menu>) this.getHibernateTemplate().find(hql, uuid);
 	}
 
+	/**
+	 * 按菜单名称查其 ID。只回标量，不能回实体——校验时若把同 ID 的实体装进 session，
+	 * 随后 update() 会抛 NonUniqueObjectException
+	 */
+	@Override
+	public String idByMenuname(String menuname) {
+		List<String> list = (List<String>) this.getHibernateTemplate().find(
+				"select m.menuid from Menu m where m.menuname=?", menuname);
+		return list.isEmpty() ? null : list.get(0);
+	}
+
+	/**
+	 * 主键是否存在，同样只回标量
+	 */
+	@Override
+	public boolean idExists(String menuid) {
+		List<Long> list = (List<Long>) this.getHibernateTemplate().find(
+				"select count(m.menuid) from Menu m where m.menuid=?", menuid);
+		return !list.isEmpty() && list.get(0).longValue() > 0;
+	}
+
 }

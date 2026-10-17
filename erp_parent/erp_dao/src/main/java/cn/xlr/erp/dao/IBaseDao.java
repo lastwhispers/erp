@@ -39,6 +39,11 @@ public interface IBaseDao<T> {
 	 * 删除
 	 */
 	void delete(Long uuid);
+
+	/**
+	 * 删除（字符串主键的实体用这个，如 menu.menuid）
+	 */
+	void delete(String uuid);
 	
 	/**
 	 * 通过编号查询对象

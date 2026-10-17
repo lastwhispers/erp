@@ -10,9 +10,10 @@
         <property name="menuname" /> 
         <property name="icon" /> 
         <property name="url" /> 
+        <property name="pid" column="pid" />
         
-        <!-- 自关联 -->
-        <bag name="menus" order-by="menuid">
+        <!-- 自关联：pid 的写入由上面的标量属性负责，集合只负责读，否则表单里的上级菜单ID 落不了库 -->
+        <bag name="menus" inverse="true" order-by="menuid">
         	<key column="pid"></key>
         	<one-to-many class="cn.xlr.erp.entity.Menu"/>
         </bag>

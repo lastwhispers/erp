@@ -17,6 +17,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 import cn.xlr.erp.biz.IBaseBiz;
 import cn.xlr.erp.entity.Emp;
+import cn.xlr.erp.exception.ErpException;
 
 /**
  * 通用Action类
@@ -115,6 +116,9 @@ public class BaseAction<T> {
 			baseBiz.add(t);
 			rtn.put("success",true);
 			rtn.put("message","新增成功");
+		} catch (ErpException e) {
+			rtn.put("success",false);
+			rtn.put("message",e.getMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 			rtn.put("success",false);
@@ -165,6 +169,8 @@ public class BaseAction<T> {
 		try {
 			baseBiz.update(t);
 			ajaxReturn(true, "修改成功");
+		} catch (ErpException e) {
+			ajaxReturn(false, e.getMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 			ajaxReturn(false, "修改失败");

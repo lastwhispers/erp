@@ -57,6 +57,13 @@ public class BaseBiz<T> implements IBaseBiz<T> {
 	public void delete(Long uuid){
 		baseDao.delete(uuid);
 	}
+
+	/**
+	 * 删除（字符串主键的实体）
+	 */
+	public void delete(String uuid){
+		baseDao.delete(uuid);
+	}
 	
 	/**
 	 * 通过编号查询对象

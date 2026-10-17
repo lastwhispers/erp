@@ -24,4 +24,8 @@ public class LocalCache {
 	public void del(String key) {
 		store.remove(key);
 	}
+
+	public void clear() {
+		store.clear();
+	}
 }

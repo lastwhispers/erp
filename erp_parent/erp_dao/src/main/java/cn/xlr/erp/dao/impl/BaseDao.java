@@ -84,6 +84,14 @@ public class BaseDao<T> extends HibernateDaoSupport implements IBaseDao<T> {
 		//删除持久化状态
 		this.getHibernateTemplate().delete(t);
 	}
+
+	/**
+	 * 删除（字符串主键的实体）
+	 */
+	public void delete(String uuid){
+		T t = this.getHibernateTemplate().get(entityClass, uuid);
+		this.getHibernateTemplate().delete(t);
+	}
 	
 	/**
 	 * 通过编号查询对象

@@ -11,8 +11,15 @@ public class Menu {
 	private String menuname;//菜单名称
 	private String icon;//图标
 	private String url;//URL
+	private String pid;//上级菜单ID，menu.menus 集合的关联列由本字段负责写入
 	private List<Menu> menus;
 
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
 	public List<Menu> getMenus() {
 		return menus;
 	}
