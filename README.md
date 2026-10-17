@@ -1,3 +1,26 @@
+## 本地可直接启动的分支：`local-dev`
+
+主干按下面的第 3、5 节部署需要 Oracle 10g 和 Redis，且依赖的 `com.oracle:ojdbc6:12.1.0.1-atlassian-hosted`
+在 Maven Central 上已不存在，现在克隆下来构建会直接失败。
+
+`local-dev` 分支把它改成了本机可跑的组合，改动如下：
+
+- Oracle → 本地 MySQL 8/9，`项目文档以及sql/sql/mysql/` 下是从原 Oracle 脚本转换出的建表与种子数据
+- Redis → 进程内缓存（Redis 原本只用于缓存员工菜单列表，只用到 get/set/del）
+- 移除 CXF webservice 与 `erp_client` 模块（红日物流运单查询，本就是可选功能）
+- 补上 JAXB 依赖，因此 **Java 11 即可启动，不需要装 JDK 8**
+
+前提：本机有 MySQL 在跑，且 root 可免密连接。两条命令：
+
+```bash
+./tools/init-local-db.sh      # 建库、灌数据
+./tools/run-local.sh          # 编译并启动，http://localhost:8888/erp/login.html
+```
+
+登录名与密码都是 `admin`。功能范围与限制见该分支的提交说明。
+
+---
+
 >该项目文档、源码地址：https://github.com/lastwhispers/erp
 该系统的权限部分已单独提取出来 https://www.jianshu.com/p/43b007b2973e
 
